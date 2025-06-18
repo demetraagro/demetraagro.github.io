@@ -142,35 +142,46 @@
             font-weight: 700;
         }
 
+        /* Feature cards grid styling */
         .features-grid {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .feature-card .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.9);
         }
 
         .feature-card.featured {
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-            padding: 3rem;
-            border-radius: 16px;
-            text-align: center;
-        }
-
-        .feature-card.featured .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .feature-card.featured h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .feature-card.featured p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.9);
+            transform: scale(1.05);
         }
 
         .about {
@@ -246,12 +257,57 @@
             border-top: 1px solid hsl(45, 10%, 30%);
         }
 
+        /* Climate change section styling */
+        .climate-change {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(60, 60, 60, 0.9)), 
+                        url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .climate-change h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .climate-change p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1.2rem; }
             .features h2, .about h2 { font-size: 2rem; }
             .feature-card.featured h3 { font-size: 1.5rem; }
             .feature-card.featured p { font-size: 1.1rem; }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .feature-card.featured {
+                transform: scale(1);
+            }
+            
+            .climate-change h2 {
+                font-size: 2.2rem;
+            }
+            
+            .climate-change p {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -275,6 +331,13 @@
         </div>
     </section>
 
+    <section class="climate-change">
+        <div class="container">
+            <h2>Adapting to a Changing Climate</h2>
+            <p>Global warming is rapidly transforming traditional growing conditions. Farmers now face unpredictable weather patterns, changing growing seasons, and new pest threats. In this new reality, successful agriculture demands data-driven decisions and innovative approaches to remain sustainable and profitable.</p>
+        </div>
+    </section>
+
     <section class="features">
         <div class="container">
             <h2>Our Solution</h2>
@@ -283,6 +346,16 @@
                     <div class="feature-icon">🎯</div>
                     <h3>Intelligent Crop Recommendations</h3>
                     <p>We analyze soil composition, climate patterns, historical yields, and market trends to provide data-driven crop selection recommendations that maximize both productivity and profitability for your specific fields.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Field Monitoring</h3>
+                    <p>Keep track of your fields' health, growth stages, and environmental conditions in real-time through an intuitive dashboard that turns complex data into actionable insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>IoT Integration</h3>
+                    <p>Connect with field sensors and weather stations to automatically collect real-time data, enabling precise monitoring and smarter decision-making for your farm operations.</p>
                 </div>
             </div>
         </div>
@@ -315,8 +388,17 @@
             <p>&copy; 2024 Demetra. Building the future of smart agriculture from Greece</p>
         </div>
     </footer>
-</body>
-</html>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctaButton = document.getElementById('ctaButton');
+            
+            ctaButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const googleFormsUrl = 'https://forms.google.com/your-form-link-here';
+                window.open(googleFormsUrl, '_blank');
+            });
+        });
     </script>
 </body>
 </html>
